@@ -56,22 +56,25 @@
                 return false;
         return true;
     }
-    void solve() 
+    void solve()
     {
-        int n , m; cin >> n >> m;
-        vi cities(n) , towers(m);
-        for(int i = 0 ; i < n ; ++i) cin >> cities[i];
-        for(int i = 0 ; i < m ; ++i) cin >> towers[i];
-        int c = 0 ,t = 0 ,r = 0;
-        for(int i = 0 ; i < n ; ++i)
+        int n , s; cin >> n >> s;
+        vi a(n);
+        for(int i = 0 ; i < n ; ++i) cin >> a[i];
+        int l = 0 ,r = 0 , res = 0;
+        int x = 0; 
+        while(r < n)
         {
-            while(t < m - 1 && abs(cities[i] - towers[t+1]) <= abs(cities[i] - towers[t]))
-                t++;
-            r = max(r , abs(cities[i] - towers[t]));
+            x += a[r];
+            while(x > s)
+            {
+                x -= a[l];
+                l++;
+            }
+            if(x <= s) res = max(res , r-l+1);
+            r++;
         }
-        cout << r;
-        
-        
+        cout << res;
     }
     signed main()
     {
