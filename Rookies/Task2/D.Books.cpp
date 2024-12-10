@@ -60,7 +60,11 @@
     {
         int n , s; cin >> n >> s;
         vi a(n);
+<<<<<<< HEAD
         for(int i = 0 ;i < n ; ++i) cin >> a[i];
+=======
+        for(int i = 0 ; i < n ; ++i) cin >> a[i];
+>>>>>>> 71e2e78977ddcc7b145743dfa2b231b0f2478d8f
         int l = 0 ,r = 0 , res = 0;
         int x = 0; 
         while(r < n)
