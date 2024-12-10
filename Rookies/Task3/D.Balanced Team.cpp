@@ -9,16 +9,13 @@
     #define no             cout << "NO\n"
     #define yes            cout << "YES\n"
     #define all(v)         (v).begin(), (v).end()
-    #define Rall(v)        (v).rbegin(), (v).rend()
+    #define Rll(v)         (v).rbegin(), (v).rend()
     #define MOD            1e9 + 7
     #define f(i , a , b)   for(int i = a ; i < b ; ++i)
     #define stop(v)        return void(cout << (v) << '\n')
     #define fast           ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
     // 0 -> 9   48 -> 57     a -> z   65 -> 90     A -> Z   97 -> 122
     /*النعيم لايُدرك بالنعيم وأن من آثر الراحة فاتته الراحة وأنه بحسب ركوب الأهوال واحتمال المشاق تكون الفرحة واللذة*/
-
-
-
 
     int gcd(int a, int b)
     {
@@ -58,23 +55,20 @@
     }
     void solve()
     {
-        int n , s; cin >> n >> s;
+        int n ; cin >> n;
         vi a(n);
-        for(int i = 0 ;i < n ; ++i) cin >> a[i];
-        int l = 0 ,r = 0 , res = 0;
-        int x = 0; 
+        for(int i = 0 ; i < n ; ++i) cin >> a[i];
+        int l = 0 , r = 1 , res = 1;
+        sort(all(a));
         while(r < n)
         {
-            x += a[r];
-            while(x > s)
-            {
-                x -= a[l];
-                l++;
-            }
-            if(x <= s) res = max(res , r-l+1);
+            if(r < n && a[l] + 5 < a[r])
+                l++;   
+            res = max(r - l + 1, res);
             r++;
         }
         cout << res;
+
     }
     signed main()
     {
